@@ -4,7 +4,7 @@ import { siteConfig } from "@/app/config/site";
 import { toAbsoluteUrl } from "@/app/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Modern Ayurveda Luxury",
+  title: "Swarna Roots | Ayurvedic Herbs, Himachal Teas & Wellness Essentials",
   description: siteConfig.brand.metaDescription,
   alternates: {
     canonical: "/",
@@ -15,11 +15,29 @@ export const metadata: Metadata = {
     },
   },
   keywords: [
-    "modern ayurveda",
-    "premium herbal store",
-    "himachal herbs",
-    "natural wellness products",
+    "Swarna Roots",
+    "Ayurvedic herbs",
+    "Himachal tea",
+    "herbal teas India",
+    "wellness oils",
+    "natural spices",
+    "wellness candles",
+    "herbal products online",
   ],
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    alternateLocale: ["en_US"],
+    url: toAbsoluteUrl("/"),
+    siteName: siteConfig.brand.name,
+    title: "Swarna Roots | Ayurvedic Herbs, Himachal Teas & Wellness Essentials",
+    description: siteConfig.brand.metaDescription,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Swarna Roots | Ayurvedic Herbs, Himachal Teas & Wellness Essentials",
+    description: siteConfig.brand.metaDescription,
+  },
 };
 
 export default function Home() {
@@ -38,6 +56,7 @@ export default function Home() {
       {
         "@type": "ContactPoint",
         telephone: `+${siteConfig.support.whatsappNumber}`,
+        email: siteConfig.support.email,
         contactType: "customer service",
       },
     ],

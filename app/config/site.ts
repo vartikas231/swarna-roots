@@ -53,6 +53,7 @@ export interface SiteConfig {
   support: {
     whatsappNumber: string;
     whatsappMessage: string;
+    email: string;
   };
   social: {
     instagramUrl: string;
@@ -111,13 +112,13 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
   brand: {
     name: "Swarna Roots",
-    siteUrl: "https://swarnaroots.com",
+    siteUrl: "https://www.swarnaroots.com",
     tagline: "Modern Ayurveda Luxury",
     heroTitle: "Ancient herbal wisdom, crafted for healthier modern living.",
     heroDescription:
       "Premium herbs, thoughtful formulations, and trusted guidance to help customers build daily wellness rituals that feel elegant and effective.",
     metaDescription:
-      "Modern Ayurveda luxury storefront for premium herbs and healthier living.",
+      "Shop premium Ayurvedic herbs, Himachal teas, wellness oils, spices, candles, and natural daily wellness essentials from Swarna Roots.",
   },
   navigation: [
     { href: "/", label: "Home" },
@@ -127,9 +128,10 @@ export const siteConfig: SiteConfig = {
     { href: "/admin", label: "Admin" },
   ],
   support: {
-    whatsappNumber: "919876543210",
+    whatsappNumber: "917018753282",
     whatsappMessage:
       "Hi Swarna Roots! Please help me choose the right herbs for my wellness goals.",
+    email: "swarnarootsteam@gmail.com",
   },
   social: {
     instagramUrl: "https://instagram.com/swarnaroots",

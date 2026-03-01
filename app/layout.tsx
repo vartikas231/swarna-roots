@@ -75,6 +75,11 @@ export default function RootLayout({
     siteConfig.support.whatsappMessage,
   );
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+  const supportEmail = resolvePublicValue(
+    process.env.NEXT_PUBLIC_SUPPORT_EMAIL,
+    siteConfig.support.email,
+  );
+  const supportEmailLink = `mailto:${supportEmail}`;
   const socialConfig = {
     instagramUrl: resolvePublicUrl(
       process.env.NEXT_PUBLIC_INSTAGRAM_URL,
@@ -140,6 +145,7 @@ export default function RootLayout({
                     <div className="footer-links">
                       <Link href="/shop">Browse catalog</Link>
                       <Link href="/checkout">Checkout</Link>
+                      <a href={supportEmailLink}>Connect over email</a>
                     </div>
                     <details className="footer-compliance">
                       <summary>FSSAI Trust &amp; Compliance</summary>
