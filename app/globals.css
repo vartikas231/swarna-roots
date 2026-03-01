@@ -1904,6 +1904,12 @@ a {
   font-size: 0.88rem;
 }
 
+.account-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.56rem;
+}
+
 .form-error {
   margin: 0.62rem 0;
   border: 1px solid color-mix(in srgb, #b23939 45%, var(--line));

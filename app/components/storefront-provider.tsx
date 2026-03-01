@@ -261,28 +261,34 @@ function normalizeState(raw: Partial<StorefrontState>): StorefrontState {
 }
 
 function getInitialState() {
-  if (typeof window === "undefined") {
-    return defaultState;
-  }
-
-  try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) {
-      return defaultState;
-    }
-    const parsed = JSON.parse(raw) as Partial<StorefrontState>;
-    return normalizeState(parsed);
-  } catch {
-    return defaultState;
-  }
+  return defaultState;
 }
 
 export function StorefrontProvider({ children }: { children: React.ReactNode }) {
   const [state, setState] = useState<StorefrontState>(getInitialState);
+  const [hasLoadedStorage, setHasLoadedStorage] = useState(false);
 
   useEffect(() => {
+    try {
+      const raw = window.localStorage.getItem(STORAGE_KEY);
+      if (!raw) {
+        return;
+      }
+      const parsed = JSON.parse(raw) as Partial<StorefrontState>;
+      setState(normalizeState(parsed));
+    } catch {
+      // Keep defaults when persisted payload is malformed.
+    } finally {
+      setHasLoadedStorage(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!hasLoadedStorage) {
+      return;
+    }
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  }, [state]);
+  }, [state, hasLoadedStorage]);
 
   useEffect(() => {
     const root = document.documentElement;
