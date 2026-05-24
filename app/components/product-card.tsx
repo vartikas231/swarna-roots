@@ -30,6 +30,8 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
               src={primaryImage}
               alt={product.name}
               className="product-thumb-image"
+              loading="lazy"
+              decoding="async"
             />
             <span className="product-thumb-overlay" aria-hidden="true" />
           </>

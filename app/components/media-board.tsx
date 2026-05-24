@@ -49,7 +49,7 @@ export function MediaBoard({
               muted
               loop
               playsInline
-              preload="auto"
+              preload="metadata"
             />
           ) : (
             // eslint-disable-next-line @next/next/no-img-element
@@ -58,6 +58,8 @@ export function MediaBoard({
               src={item}
               alt={title ?? "Storefront media"}
               className={index === activeIndex ? "media-board-asset is-active" : "media-board-asset"}
+              loading="lazy"
+              decoding="async"
             />
           ),
         )}

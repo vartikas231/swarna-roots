@@ -46,7 +46,13 @@ export default function CartPage() {
                 >
                   {primaryImage ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={primaryImage} alt={item.product.name} className="cart-thumb-image" />
+                    <img
+                      src={primaryImage}
+                      alt={item.product.name}
+                      className="cart-thumb-image"
+                      loading="lazy"
+                      decoding="async"
+                    />
                   ) : null}
                 </Link>
                 <div className="cart-copy">

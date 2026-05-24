@@ -1,0 +1,129 @@
+:root {
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-body: var(--font-nunito), Inter, "Segoe UI", sans-serif;
+
+  --bg: #f6f7f2;
+  --paper: #ffffff;
+  --paper-rich: #f8faf4;
+  --ink: #1f2d24;
+  --ink-soft: #607066;
+  --outline: #78917c;
+  --line: #d9ded2;
+  --gold: #ad8a3d;
+  --gold-soft: #efe2b8;
+  --sage: #8fac88;
+  --clay: #ba7d64;
+  --jade: #2f7655;
+
+  --color-page: var(--bg);
+  --color-surface: var(--paper);
+  --color-surface-muted: var(--paper-rich);
+  --color-text: var(--ink);
+  --color-muted: var(--ink-soft);
+  --color-border: color-mix(in srgb, var(--line) 86%, var(--outline));
+  --color-border-strong: color-mix(in srgb, var(--outline) 72%, var(--line));
+  --color-accent: var(--jade);
+  --color-accent-soft: color-mix(in srgb, var(--sage) 18%, white);
+  --color-warning: var(--gold);
+  --color-warning-soft: color-mix(in srgb, var(--gold-soft) 54%, white);
+  --color-danger: #a6423b;
+  --color-danger-soft: #fbebea;
+  --color-success: #2f7655;
+  --color-success-soft: #e9f5ed;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  --radius-xs: 0.375rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 0.875rem;
+  --radius-pill: 999px;
+  --surface-radius: 10px;
+  --button-shape-radius: var(--radius-md);
+  --button-shape-clip: none;
+  --icon-shape-radius: var(--radius-md);
+  --icon-shape-clip: none;
+
+  --shadow-xs: 0 1px 2px rgba(31, 45, 36, 0.06);
+  --shadow-sm: 0 8px 20px rgba(31, 45, 36, 0.08);
+  --shadow-md: 0 16px 36px rgba(31, 45, 36, 0.1);
+  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--jade) 22%, transparent);
+
+  --shell-max-width: 1440px;
+  --shell-side-margin: 32px;
+  --hero-min-height: 56vh;
+  --section-gap: 18px;
+  --icon-stroke-width: 2;
+}
+
+:root[data-radius-scale="soft"] {
+  --radius-sm: 0.45rem;
+  --radius-md: 0.56rem;
+  --radius-lg: 0.68rem;
+  --radius-xl: 0.8rem;
+}
+
+:root[data-radius-scale="medium"] {
+  --radius-sm: 0.55rem;
+  --radius-md: 0.7rem;
+  --radius-lg: 0.85rem;
+  --radius-xl: 1rem;
+}
+
+:root[data-radius-scale="bold"] {
+  --radius-sm: 0.7rem;
+  --radius-md: 0.9rem;
+  --radius-lg: 1.1rem;
+  --radius-xl: 1.3rem;
+}
+
+:root[data-shape-theme="seed"] {
+  --icon-shape-radius: var(--radius-pill);
+  --button-shape-radius: var(--radius-pill);
+}
+
+:root[data-shape-theme="leaf"],
+:root[data-shape-theme="petal"],
+:root[data-shape-theme="butterfly"],
+:root[data-shape-theme="stone"] {
+  --icon-shape-radius: var(--radius-md);
+  --button-shape-radius: var(--radius-md);
+  --icon-shape-clip: none;
+  --button-shape-clip: none;
+}
+
+:root[data-button-style="outline-soft"] .btn-primary {
+  border-color: var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+:root[data-button-style="outline-soft"] .btn-primary:hover {
+  border-color: color-mix(in srgb, var(--jade) 56%, var(--outline));
+  background: var(--color-accent-soft);
+}
+
+:root[data-button-style="text-minimal"] .btn-primary,
+:root[data-button-style="text-minimal"] .btn-outline {
+  border-color: transparent;
+  background: transparent;
+  color: var(--color-accent);
+  padding-inline: var(--space-2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+:root[data-button-style="text-minimal"] .btn-primary:hover,
+:root[data-button-style="text-minimal"] .btn-outline:hover {
+  background: transparent;
+  color: color-mix(in srgb, var(--jade) 72%, black);
+}

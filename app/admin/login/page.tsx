@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FormEvent, useEffect, useState } from "react";
 
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export default function AdminLoginPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -55,10 +57,17 @@ export default function AdminLoginPage() {
     event.preventDefault();
     setError(null);
     setSuccess(null);
+
+    const normalizedEmail = email.trim().toLowerCase();
+    if (!emailPattern.test(normalizedEmail) || password.length < 8) {
+      setError("Enter a valid admin email and password.");
+      return;
+    }
+
     setIsSubmitting(true);
 
     const result = await signIn("credentials", {
-      email,
+      email: normalizedEmail,
       password,
       redirect: false,
       callbackUrl,
@@ -79,6 +88,17 @@ export default function AdminLoginPage() {
     event.preventDefault();
     setError(null);
     setSuccess(null);
+
+    const normalizedEmail = bootstrapEmail.trim().toLowerCase();
+    if (
+      bootstrapName.trim().length < 2 ||
+      !emailPattern.test(normalizedEmail) ||
+      bootstrapPassword.length < 8
+    ) {
+      setError("Enter a valid name, email, and password of at least 8 characters.");
+      return;
+    }
+
     setIsSubmitting(true);
 
     const response = await fetch("/api/auth/bootstrap-admin", {
@@ -87,8 +107,8 @@ export default function AdminLoginPage() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: bootstrapName,
-        email: bootstrapEmail,
+        name: bootstrapName.trim(),
+        email: normalizedEmail,
         password: bootstrapPassword,
       }),
     });
@@ -106,11 +126,11 @@ export default function AdminLoginPage() {
 
     setSuccess(payload.message ?? "Super admin created. Signing you in...");
     setNeedsBootstrap(false);
-    setEmail(bootstrapEmail);
+    setEmail(normalizedEmail);
     setPassword(bootstrapPassword);
 
     const signInResult = await signIn("credentials", {
-      email: bootstrapEmail,
+      email: normalizedEmail,
       password: bootstrapPassword,
       redirect: false,
       callbackUrl: "/admin",
@@ -145,11 +165,12 @@ export default function AdminLoginPage() {
         {loadingBootstrapState ? (
           <p>Checking setup status...</p>
         ) : needsBootstrap ? (
-          <form className="admin-grid-form" onSubmit={handleBootstrap}>
+          <form className="admin-grid-form" onSubmit={handleBootstrap} noValidate>
             <label>
               Full name
               <input
                 required
+                autoComplete="name"
                 value={bootstrapName}
                 onChange={(event) => setBootstrapName(event.target.value)}
                 placeholder="Owner name"
@@ -160,6 +181,8 @@ export default function AdminLoginPage() {
               <input
                 required
                 type="email"
+                autoComplete="email"
+                inputMode="email"
                 value={bootstrapEmail}
                 onChange={(event) => setBootstrapEmail(event.target.value)}
                 placeholder="owner@yourdomain.com"
@@ -171,6 +194,7 @@ export default function AdminLoginPage() {
                 required
                 type="password"
                 minLength={8}
+                autoComplete="new-password"
                 value={bootstrapPassword}
                 onChange={(event) => setBootstrapPassword(event.target.value)}
                 placeholder="Create a strong password"
@@ -181,12 +205,14 @@ export default function AdminLoginPage() {
             </button>
           </form>
         ) : (
-          <form className="admin-grid-form" onSubmit={handleLogin}>
+          <form className="admin-grid-form" onSubmit={handleLogin} noValidate>
             <label className="field-span-2">
               Admin email
               <input
                 required
                 type="email"
+                autoComplete="email"
+                inputMode="email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder="admin@yourdomain.com"
@@ -197,6 +223,8 @@ export default function AdminLoginPage() {
               <input
                 required
                 type="password"
+                minLength={8}
+                autoComplete="current-password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 placeholder="Your admin password"

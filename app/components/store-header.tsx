@@ -15,7 +15,7 @@ export function StoreHeader() {
   const { data: session } = useSession();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const accountHref = session?.user ? "/account" : "/login";
-  const accountLabel = session?.user ? "Account" : "Login";
+  const accountLabel = session?.user ? "Account" : "Sign in";
 
   return (
     <header className="store-header reveal">

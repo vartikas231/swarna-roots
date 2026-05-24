@@ -1,14 +1,14 @@
 import { CustomerAuthForm } from "@/app/components/customer-auth-form";
 
-interface LoginPageProps {
+interface SignupPageProps {
   searchParams?: Promise<{ callbackUrl?: string }>;
 }
 
-export default async function LoginPage({ searchParams }: LoginPageProps) {
+export default async function SignupPage({ searchParams }: SignupPageProps) {
   const resolvedSearchParams = await searchParams;
   return (
     <CustomerAuthForm
-      mode="login"
+      mode="signup"
       callbackUrl={resolvedSearchParams?.callbackUrl ?? "/account"}
     />
   );

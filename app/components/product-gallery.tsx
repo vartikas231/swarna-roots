@@ -34,6 +34,7 @@ export function ProductGallery({ product }: ProductGalleryProps) {
             src={currentImage}
             alt={`${product.name} image ${visibleIndex + 1}`}
             className="product-gallery-image"
+            decoding="async"
           />
           <div className="product-gallery-overlay">
             <div className="product-gallery-top">

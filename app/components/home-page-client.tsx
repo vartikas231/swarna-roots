@@ -2,7 +2,6 @@
 
 import { HealthIcon } from "@/app/components/health-icon";
 import { MediaBoard } from "@/app/components/media-board";
-import { ProductCard } from "@/app/components/product-card";
 import { useStorefront } from "@/app/components/storefront-provider";
 import { siteConfig } from "@/app/config/site";
 import { getCategoryPathByName } from "@/app/lib/category-seo";
@@ -11,7 +10,6 @@ import { useMemo, type CSSProperties } from "react";
 
 export function HomePageClient() {
   const { state } = useStorefront();
-  const featuredProducts = state.products.filter((product) => product.featured).slice(0, 4);
   const categoryQuickLinks = useMemo(() => {
     return state.categories
       .map((category) => ({
@@ -48,13 +46,13 @@ export function HomePageClient() {
       {
         name: "Wellness Candles",
         eyebrow: "Evening ritual",
-        description: "Warm botanical candles designed to make the store feel like a calming shelf, not a catalog.",
+        description: "Warm botanical candles for gifting, unwinding, and calmer evening spaces.",
         accentClass: "hero-collection-card--candle",
       },
       {
         name: "Botanical Soaps",
         eyebrow: "Bath care",
-        description: "Clean herbal soaps with a more giftable, real-market presentation.",
+        description: "Clean herbal soaps made for simple, natural bath care routines.",
         accentClass: "hero-collection-card--soap",
       },
       {
@@ -83,11 +81,11 @@ export function HomePageClient() {
       <section className="hero-panel hero-panel--landing reveal reveal-delay-1">
         <div className="hero-copy">
           <p className="eyebrow">{siteConfig.brand.tagline}</p>
-          <span className="hero-kicker">Bright herbal market, Himachal soul, premium trust</span>
-          <h1>Herbs, teas, candles, soaps, and daily care rituals that feel genuinely real.</h1>
+          <span className="hero-kicker">Small-batch wellness essentials from Himachal roots</span>
+          <h1>Premium herbs, teas, candles, soaps, and everyday care rituals.</h1>
           <p className="hero-intro">
-            A cleaner storefront with clearer shopping, a brighter white-pink-green-gold palette,
-            and enough structure to feel premium from the first screen.
+            Shop trusted botanicals, mountain teas, natural bath care, and thoughtful wellness
+            gifts with clear guidance from the Swarna Roots family.
           </p>
 
           <div className="hero-feature-strip">
@@ -180,8 +178,8 @@ export function HomePageClient() {
           <p className="eyebrow">Store Sections</p>
           <h2>Shop every ritual in one place</h2>
           <p>
-            Give customers a clear path into teas, candles, soaps, loofahs, seeds, oils,
-            herbs, and pantry wellness staples without crowding the banner itself.
+            Find teas, candles, soaps, loofahs, seeds, oils, herbs, and pantry wellness
+            staples through focused collections built for everyday routines.
           </p>
 
           <div className="sidebar-support-card">
@@ -277,18 +275,6 @@ export function HomePageClient() {
 
       <section className="section-card reveal reveal-delay-3">
         <div className="section-head">
-          <h2>Signature herbal selections</h2>
-          <Link href="/shop">View full catalog</Link>
-        </div>
-        <div className="product-grid">
-          {featuredProducts.map((product, index) => (
-            <ProductCard key={product.id} product={product} index={index} />
-          ))}
-        </div>
-      </section>
-
-      <section className="section-card reveal reveal-delay-3">
-        <div className="section-head">
           <h2>Ingredient quality standards</h2>
         </div>
         <div className="trust-grid">
@@ -310,7 +296,9 @@ export function HomePageClient() {
           <h2>Customer satisfaction stories</h2>
           <Link href="/shop">Join our wellness community</Link>
         </div>
-        <MediaBoard className="review-media-board" items={state.media.reviewMediaUrls} />
+        {state.media.reviewMediaUrls.length > 0 ? (
+          <MediaBoard className="review-media-board" items={state.media.reviewMediaUrls} />
+        ) : null}
         <div className="stories-grid">
           {state.stories.map((story, index) => (
             <article

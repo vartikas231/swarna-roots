@@ -1,0 +1,266 @@
+@media (min-width: 520px) {
+  .product-grid,
+  .home-category-grid,
+  .goals-grid,
+  .trust-grid,
+  .stories-grid,
+  .team-grid,
+  .style-preview-grid,
+  .preset-grid,
+  .layout-control-grid,
+  .track-order-grid,
+  .theme-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .field-grid,
+  .filters-grid,
+  .admin-grid-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .field-span-2 {
+    grid-column: span 2;
+  }
+
+  .shop-results-meta,
+  .tracking-event-head {
+    flex-direction: row;
+    align-items: baseline;
+  }
+
+  .cart-item {
+    grid-template-columns: 4.5rem minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .cart-line-price {
+    grid-column: auto;
+    text-align: right;
+  }
+}
+
+@media (min-width: 720px) {
+  .store-header {
+    grid-template-columns: minmax(0, auto) 1fr auto auto;
+  }
+
+  .header-menu-toggle {
+    display: none;
+  }
+
+  .header-nav,
+  .header-nav.is-open {
+    display: flex;
+    grid-column: auto;
+    justify-content: center;
+  }
+
+  .store-footer {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+  }
+
+  .footer-socials {
+    justify-content: flex-end;
+  }
+
+  .hero-stats-grid,
+  .hero-feature-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .hero-media-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .hero-collection-card--spotlight {
+    grid-column: 1 / -1;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-filter-shell {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 960px) {
+  .app-shell {
+    padding-top: var(--space-4);
+  }
+
+  .section-head {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .hero-panel--landing {
+    grid-template-columns: minmax(0, 1.1fr) minmax(24rem, 0.9fr);
+    min-height: clamp(32rem, var(--hero-min-height), 46rem);
+  }
+
+  .home-category-hub {
+    grid-template-columns: minmax(18rem, 24rem) minmax(0, 1fr);
+  }
+
+  .home-category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .shop-layout {
+    grid-template-columns: minmax(16rem, 19rem) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .shop-sidebar {
+    position: sticky;
+    top: 6rem;
+    display: block;
+  }
+
+  .shop-category-select {
+    display: none;
+  }
+
+  .checkout-layout {
+    grid-template-columns: minmax(0, 1.35fr) minmax(20rem, 0.65fr);
+    align-items: start;
+  }
+
+  .summary-card {
+    position: sticky;
+    top: 6rem;
+  }
+
+  .product-detail {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  }
+
+  .product-gallery-main {
+    min-height: 24rem;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .trust-grid,
+  .stories-grid,
+  .team-grid,
+  .style-preview-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .admin-filter-shell {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1240px) {
+  .product-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(3.75rem, 5vw, 5.4rem);
+  }
+
+  .hero-media-canvas .media-board-screen {
+    min-height: 19rem;
+  }
+
+  .admin-filter-shell {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) auto auto;
+  }
+}
+
+@media (max-width: 519px) {
+  .app-shell {
+    padding-inline: 0.5rem;
+  }
+
+  .page-shell,
+  .store-header,
+  .store-footer {
+    width: calc(100vw - 1rem);
+    max-width: calc(100vw - 1rem);
+  }
+
+  .store-header {
+    grid-template-columns: 1fr auto;
+  }
+
+  .cart-pill {
+    width: 100%;
+  }
+
+  .header-nav.is-open {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy h1 {
+    max-width: 100%;
+  }
+
+  .hero-stats-grid,
+  .product-actions,
+  .hero-actions,
+  .marketplace-actions,
+  .account-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions .btn,
+  .marketplace-actions .btn,
+  .product-actions .btn,
+  .product-actions .product-qty-control,
+  .account-actions .btn {
+    width: 100%;
+  }
+
+  .product-gallery-top,
+  .location-card-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .product-gallery-thumb {
+    width: calc(25% - 0.4rem);
+  }
+
+  .admin-product-images {
+    min-width: 0;
+  }
+
+  .admin-image-order-row {
+    grid-template-columns: 1fr auto auto;
+  }
+
+  .admin-image-order-row code {
+    grid-column: 1 / -1;
+  }
+
+  .whatsapp-float {
+    right: 0.75rem;
+    bottom: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-stagger {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+
+  .market-ribbon-track,
+  .trust-marquee-track,
+  .herbal-loader-leaf {
+    animation: none;
+  }
+}
