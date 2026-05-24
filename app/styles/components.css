@@ -1255,10 +1255,25 @@
 
 .cart-line-price {
   grid-column: 2;
+  display: grid;
+  gap: var(--space-1);
+  justify-items: start;
 }
 
 .cart-line-price strong {
   display: block;
+  color: var(--color-text);
+  font-family: var(--font-display), serif;
+  font-size: 1.08rem;
+  line-height: 1;
+}
+
+.cart-line-price span {
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .qty-control {
@@ -1269,6 +1284,10 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-surface);
+}
+
+.cart-item > .qty-control {
+  grid-column: 2;
 }
 
 .qty-control button {

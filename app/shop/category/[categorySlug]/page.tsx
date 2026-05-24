@@ -1,4 +1,4 @@
-import { ProductCard } from "@/app/components/product-card";
+import { CategoryProductGrid } from "@/app/components/category-product-grid";
 import { siteConfig } from "@/app/config/site";
 import { getProductImages } from "@/app/data/herbs";
 import {
@@ -162,24 +162,7 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
           <Link href="/shop">Back to full shop</Link>
         </div>
 
-        {products.length > 0 ? (
-          <div className="product-grid">
-            {products.map((product, index) => (
-              <ProductCard key={product.id} product={product} index={index} />
-            ))}
-          </div>
-        ) : (
-          <div className="empty-state">
-            <h2>Coming soon</h2>
-            <p>
-              We are curating this collection now. Reach us on WhatsApp for early access
-              recommendations.
-            </p>
-            <Link href="/shop" className="btn btn-primary">
-              Explore current catalog
-            </Link>
-          </div>
-        )}
+        <CategoryProductGrid categoryName={profile.name} fallbackProducts={products} />
       </section>
     </div>
   );

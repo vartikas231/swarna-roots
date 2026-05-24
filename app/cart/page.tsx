@@ -60,7 +60,6 @@ export default function CartPage() {
                     <Link href={`/shop/${item.product.slug}`}>{item.product.name}</Link>
                   </h2>
                   <p>{item.product.unitLabel}</p>
-                  <strong>{formatPrice(item.product.price)}</strong>
                 </div>
 
                 <div className="qty-control">
@@ -82,6 +81,7 @@ export default function CartPage() {
                 </div>
 
                 <div className="cart-line-price">
+                  <span>Line total</span>
                   <strong>{formatPrice(item.lineTotal)}</strong>
                   <button
                     type="button"
